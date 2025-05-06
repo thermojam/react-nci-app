@@ -1,0 +1,22 @@
+.swiperContainer {
+    background-color: #242424;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 20px;
+}
+
+
+:global(.swiper-pagination-progressbar) {
+    background-color: #23fbff;
+
+}
+
+:global(.swiper-pagination-progressbar .swiper-pagination-progressbar-fill) {
+    background-color: #005694;
+}
