@@ -13,11 +13,11 @@ const Card = ({image, title, price, description, features}) => {
             <div className="card h-100">
                 <img src={image} className="card-img-top" alt={title}/>
                 <div className="card-body">
-                    <h5 className="card-title">{title}</h5>
-                    <p className="card-text">{description}</p>
+                    <h5 className="card-title my-0">{title}</h5>
+                    <p className="card-text my-0">{description}</p>
                     <p className="fw-bold text-primary ">{price}</p>
 
-                    <button onClick={openModal} className="btn btn-dark w-50">
+                    <button onClick={openModal} className="btn btn-dark w-100 text-center">
                         Подробнее
                     </button>
 

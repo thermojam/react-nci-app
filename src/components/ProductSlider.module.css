@@ -1,7 +1,7 @@
 .swiperContainer {
-    background-color: #242424;
+
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 0 auto;
 }
 
 .grid {
@@ -13,10 +13,10 @@
 
 
 :global(.swiper-pagination-progressbar) {
-    background-color: #23fbff;
+    background-color: #c15bff;
 
 }
 
 :global(.swiper-pagination-progressbar .swiper-pagination-progressbar-fill) {
-    background-color: #005694;
+    background-color: #07363D;
 }

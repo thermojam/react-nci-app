@@ -8,7 +8,7 @@ const ProductModal = ({ show, handleClose, product }) => {
     return (
         <Modal show={show} onHide={handleClose} size="lg" centered>
             <Modal.Header closeButton>
-                <Modal.Title>{title} — Подробности</Modal.Title>
+                <Modal.Title>{title} {description}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div className="row">
@@ -17,7 +17,7 @@ const ProductModal = ({ show, handleClose, product }) => {
                     </div>
                     <div className="col-md-7">
                         <h5>{title}</h5>
-                        <p><strong>Цена:</strong> {price}</p>
+                        <p className="text-primary"><strong>Цена:</strong> {price}</p>
                         <p>{description}</p>
                         {features && features.length > 0 && (
                             <div>
@@ -31,7 +31,7 @@ const ProductModal = ({ show, handleClose, product }) => {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>Закрыть</Button>
+                <Button variant="dark" onClick={handleClose}>Закрыть</Button>
             </Modal.Footer>
         </Modal>
     );
