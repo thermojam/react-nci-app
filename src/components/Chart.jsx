@@ -25,16 +25,16 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarEleme
 
 // 📅 Метки по периодам
 const PERIODS = {
-    day: { label: 'День', count: 6, labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'] },
-    week: { label: 'Неделя', count: 7, labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'] },
-    month: { label: 'Месяц', count: 12, labels: Array.from({ length: 12 }, (_, i) => `${i + 1} дн.`) },
+    day: { label: 'Day', count: 6, labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'] },
+    week: { label: 'Week', count: 7, labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'] },
+    month: { label: 'Month', count: 12, labels: Array.from({ length: 12 }, (_, i) => `${i + 1} дн.`) },
 };
 
 // 🎨 Цвета
 const getRandomColor = () => {
-    const h = Math.floor(Math.random() * 360); // оттенок
-    const s = 70 + Math.random() * 20; // насыщенность 70–90%
-    const l = 45 + Math.random() * 10; // яркость 45–55%
+    const h = Math.floor(Math.random() * 360);
+    const s = 70 + Math.random() * 20;
+    const l = 45 + Math.random() * 10;
     return `hsl(${h}, ${s}%, ${l}%)`;
 };
 
@@ -64,8 +64,8 @@ export default function DashboardWithDonations() {
     const [period, setPeriod] = useState('day');
     const [chartType, setChartType] = useState('bar');
 
-    const [data1, setData1] = useState(generateRandomData('Серия A', PERIODS.day.count, PERIODS.day.labels, 0));
-    const [data2, setData2] = useState(generateRandomData('Серия B', PERIODS.day.count, PERIODS.day.labels, 1));
+    const [data1, setData1] = useState(generateRandomData('New Cars', PERIODS.day.count, PERIODS.day.labels, 0));
+    const [data2, setData2] = useState(generateRandomData('Used Cars', PERIODS.day.count, PERIODS.day.labels, 1));
 
     const [prevData1, setPrevData1] = useState(data1.rawData);
     const [prevData2, setPrevData2] = useState(data2.rawData);
@@ -79,8 +79,8 @@ export default function DashboardWithDonations() {
             setPrevData1(data1.rawData);
             setPrevData2(data2.rawData);
 
-            setData1(generateRandomData('Серия A', count, labels, 0));
-            setData2(generateRandomData('Серия B', count, labels, 1));
+            setData1(generateRandomData('New Cars', count, labels, 0));
+            setData2(generateRandomData('Used Cars', count, labels, 1));
         }, 2000);
 
         return () => clearInterval(interval);
@@ -93,7 +93,7 @@ export default function DashboardWithDonations() {
         const delta = current.reduce((sum, val, i) => sum + (val - (prev[i] || 0)), 0);
         return {
             isUp: delta >= 0,
-            text: delta >= 0 ? `Рост на ${delta}` : `Падение на ${Math.abs(delta)}`,
+            text: delta >= 0 ? `Up ${delta}` : `Down ${Math.abs(delta)}`,
         };
     };
 
@@ -135,13 +135,13 @@ export default function DashboardWithDonations() {
                     startIcon={<FavoriteIcon />}
                     onClick={() => window.open(donationConfig.stripeUrl, '_blank')}
                 >
-                    Поддержать $5
+                    BOOST $5
                 </Button>
             </Stack>
 
             {/* Графики */}
             <Stack direction="row" spacing={4} justifyContent="center" flexWrap="wrap">
-                {[{ data: data1, prev: prevData1, label: 'A' }, { data: data2, prev: prevData2, label: 'B' }].map(
+                {[{ data: data1, prev: prevData1, label: 'New' }, { data: data2, prev: prevData2, label: 'Used' }].map(
                     ({ data, prev, label }, idx) => {
                         const { isUp, text } = getChangeInfo(data.rawData, prev);
 
@@ -149,7 +149,7 @@ export default function DashboardWithDonations() {
                             <Box
                                 key={idx}
                                 sx={{
-                                    width: 800,
+                                    width: 805,
                                     height: 750,
                                     backgroundColor: '#282828',
                                     borderRadius: 2,
@@ -170,7 +170,7 @@ export default function DashboardWithDonations() {
                                 {/* Диаграмма */}
                                 <Box sx={{ flexGrow: 1, height: '100%' }}>
                                     <Typography color="white" align="center" fontWeight="bold" mb={1}>
-                                        Серия {label}
+                                        Product {label}
                                     </Typography>
                                     <ChartComponent data={data.chartData} options={chartOptions} />
                                 </Box>
