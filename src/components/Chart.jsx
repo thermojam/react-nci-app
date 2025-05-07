@@ -140,7 +140,7 @@ export default function DashboardWithDonations() {
             </Stack>
 
             {/* Графики */}
-            <Stack direction="row" spacing={4} justifyContent="center" flexWrap="wrap">
+            <Stack direction="row" spacing={8} justifyContent="center" flexWrap="wrap">
                 {[{ data: data1, prev: prevData1, label: 'New' }, { data: data2, prev: prevData2, label: 'Used' }].map(
                     ({ data, prev, label }, idx) => {
                         const { isUp, text } = getChangeInfo(data.rawData, prev);
@@ -149,7 +149,7 @@ export default function DashboardWithDonations() {
                             <Box
                                 key={idx}
                                 sx={{
-                                    width: 805,
+                                    width: 500,
                                     height: 750,
                                     backgroundColor: '#282828',
                                     borderRadius: 2,
@@ -160,7 +160,7 @@ export default function DashboardWithDonations() {
                                 }}
                             >
                                 {/* Левая панель */}
-                                <Box sx={{ width: 60, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <Box sx={{ width: 100, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                     {isUp ? <ArrowUpwardIcon sx={{ color: 'lime' }} /> : <ArrowDownwardIcon sx={{ color: 'tomato' }} />}
                                     <Typography color="gray" fontSize={13} align="center" mt={1}>
                                         {text}

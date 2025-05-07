@@ -4,6 +4,7 @@ import Navbar from './components/Navbar.jsx'
 import {Catalog} from "./pages/Catalog.jsx";
 import {Statistic} from "./pages/Statistic.jsx";
 
+
 import styles from './App.module.css'
 
 function App() {
@@ -17,7 +18,6 @@ function App() {
                         <Route path="/" element={<Catalog/>}/>
                         <Route path="/statistic" element={<Statistic/>}/>
                     </Routes>
-
                 </Router>
             </div>
         </>

@@ -10,7 +10,7 @@ const Card = ({image, title, price, description, features}) => {
 
     return (
         <>
-            <div className="card h-100 w-75 mt-4">
+            <div className="card mt-4">
                 <img src={image} className="card-img-top" alt={title}/>
                 <div className="card-body">
                     <h5 className="card-title my-0">{title}</h5>
