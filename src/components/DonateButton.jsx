@@ -9,12 +9,12 @@ const DonateButton = () => {
     const handleDonate = async () => {
         try {
             const res = await axios.post(`${DONATION_SERVER_URL}/create-checkout-session`, {
-                amount: 5000,      // $5 → 500 центов
+                amount: 5000,
                 currency: 'usd'
             });
 
             if (res.data.url) {
-                window.location.href = res.data.url;
+                window.open(res.data.url, '_blank', 'noopener,noreferrer');
             }
         } catch (error) {
             console.error('Donation failed:', error);
@@ -28,7 +28,7 @@ const DonateButton = () => {
             startIcon={<FavoriteIcon />}
             onClick={handleDonate}
         >
-            BOOST $500
+            BOOST $5
         </Button>
     );
 };
