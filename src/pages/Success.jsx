@@ -14,7 +14,7 @@ export const Success = () => {
                 backgroundColor: '#282828',
                 color: 'white',
             }}>
-            <CheckCircleIcon color="success" sx={{ fontSize: 80, color: '#87faab' }} />
+            <CheckCircleIcon color="success" sx={{ fontSize: 120, color: '#74ffa1' }} />
             <Typography variant="h4" mt={2}>Спасибо за поддержку!</Typography>
             <Typography mt={1}>Ваш платёж успешно завершён 🙌</Typography>
         </Box>

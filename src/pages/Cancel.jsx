@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, CircularProgress } from '@mui/material';
+import { Box, Typography} from '@mui/material';
 import { Cancel as CancelIcon } from '@mui/icons-material';
 
 
@@ -17,11 +17,10 @@ export const Cancel = () => {
                 color: 'white',
             }}
         >
-            <CancelIcon sx={{ fontSize: 80, marginBottom: 2 }} />
+            <CancelIcon sx={{ fontSize: 120 ,color: '#fb3eff' }} />
             <Typography variant="h4" sx={{ marginBottom: 2 }}>
                 Donation Failed!
             </Typography>
-            <CircularProgress sx={{ color: '#fb1eff' }} />
         </Box>
     );
 };
