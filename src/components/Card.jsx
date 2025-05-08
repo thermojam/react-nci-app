@@ -2,6 +2,7 @@ import {useState} from 'react';
 import PropTypes from 'prop-types';
 import ProductModal from './ProductModal';
 
+
 const Card = ({image, title, price, description, features}) => {
     const [showModal, setShowModal] = useState(false);
 
@@ -10,7 +11,7 @@ const Card = ({image, title, price, description, features}) => {
 
     return (
         <>
-            <div className="card mt-4">
+            <div className="card">
                 <img src={image} className="card-img-top" alt={title}/>
                 <div className="card-body">
                     <h5 className="card-title my-0">{title}</h5>
