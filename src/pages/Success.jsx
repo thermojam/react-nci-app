@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Typography} from '@mui/material';
+import {Box, Typography, CircularProgress} from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { keyframes } from '@emotion/react';
 
@@ -28,7 +28,7 @@ export const Success = () => {
                 alignItems: 'center',
                 flexDirection: 'column',
                 height: '100vh',
-                backgroundColor: '#4CAF50', // Зеленый фон для успеха
+                backgroundColor: '#282828', // Зеленый фон для успеха
                 color: 'white',
                 animation: `${successAnimation} 2s ease-in-out`
             }}
