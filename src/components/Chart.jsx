@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import {
     Box, Typography, Button, ButtonGroup, Stack, ToggleButton, ToggleButtonGroup, Paper
 } from '@mui/material';
-import { Bar, Line } from 'react-chartjs-2';
+import {Bar, Line} from 'react-chartjs-2';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -16,8 +16,7 @@ import {
 
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import donationConfig from '../config/donationConfig';
+import DonateButton from './DonateButton';
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Tooltip, Legend);
@@ -25,9 +24,9 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarEleme
 
 // 📅 Метки по периодам
 const PERIODS = {
-    day: { label: 'Day', count: 6, labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'] },
-    week: { label: 'Week', count: 7, labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'] },
-    month: { label: 'Month', count: 12, labels: Array.from({ length: 12 }, (_, i) => `${i + 1} дн.`) },
+    day: {label: 'Day', count: 6, labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']},
+    week: {label: 'Week', count: 7, labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']},
+    month: {label: 'Month', count: 12, labels: Array.from({length: 12}, (_, i) => `${i + 1} дн.`)},
 };
 
 // 🎨 Цвета
@@ -39,7 +38,7 @@ const getRandomColor = () => {
 };
 
 const generateRandomData = (label, count, labels) => {
-    const data = Array.from({ length: count }, () => Math.floor(Math.random() * 100));
+    const data = Array.from({length: count}, () => Math.floor(Math.random() * 100));
     const color = getRandomColor();
 
     return {
@@ -74,7 +73,7 @@ export default function DashboardWithDonations() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            const { count, labels } = PERIODS[period];
+            const {count, labels} = PERIODS[period];
 
             setPrevData1(data1.rawData);
             setPrevData2(data2.rawData);
@@ -100,18 +99,20 @@ export default function DashboardWithDonations() {
     const chartOptions = {
         responsive: true,
         maintainAspectRatio: false,
-        plugins: { legend: { position: 'top' } },
-        scales: { y: { beginAtZero: true } },
+        plugins: {legend: {position: 'top'}},
+        scales: {y: {beginAtZero: true}},
     };
 
     return (
-        <Box sx={{ padding: 4, backgroundColor: '#1e1e1e', minHeight: '100vh' }}>
+        <Box sx={{padding: 2, backgroundColor: '#1e1e1e', minHeight: '100vh'}}>
             {/* Панель управления */}
-            <Stack direction="row" justifyContent="space-between" alignItems="center" mb={4} spacing={2} flexWrap="wrap">
+            <Stack direction="row" justifyContent="space-between" alignItems="center" mb={4} spacing={2}
+                   flexWrap="wrap">
                 <Stack direction="row" spacing={2}>
                     <ButtonGroup variant="outlined">
-                        {Object.entries(PERIODS).map(([key, { label }]) => (
-                            <Button key={key} onClick={() => setPeriod(key)} variant={period === key ? 'contained' : 'outlined'}>
+                        {Object.entries(PERIODS).map(([key, {label}]) => (
+                            <Button key={key} onClick={() => setPeriod(key)}
+                                    variant={period === key ? 'contained' : 'outlined'}>
                                 {label}
                             </Button>
                         ))}
@@ -123,27 +124,22 @@ export default function DashboardWithDonations() {
                         onChange={(e, val) => val && setChartType(val)}
                         color="primary"
                     >
-                        <ToggleButton value="bar">Bar</ToggleButton>
-                        <ToggleButton value="line">Line</ToggleButton>
+                        <ToggleButton sx={{color: '#fd28ff'}} value="bar">Bar</ToggleButton>
+                        <ToggleButton sx={{color: '#fd28ff'}} value="line">Line</ToggleButton>
                     </ToggleButtonGroup>
                 </Stack>
 
                 {/* Донаты */}
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    startIcon={<FavoriteIcon />}
-                    onClick={() => window.open(donationConfig.stripeUrl, '_blank')}
-                >
-                    BOOST $5
-                </Button>
+                <Box sx={{padding: 2}}>
+                    <DonateButton/>
+                </Box>
             </Stack>
 
             {/* Графики */}
             <Stack direction="row" spacing={8} justifyContent="center" flexWrap="wrap">
-                {[{ data: data1, prev: prevData1, label: 'New' }, { data: data2, prev: prevData2, label: 'Used' }].map(
-                    ({ data, prev, label }, idx) => {
-                        const { isUp, text } = getChangeInfo(data.rawData, prev);
+                {[{data: data1, prev: prevData1, label: 'New'}, {data: data2, prev: prevData2, label: 'Used'}].map(
+                    ({data, prev, label}, idx) => {
+                        const {isUp, text} = getChangeInfo(data.rawData, prev);
 
                         return (
                             <Box
@@ -160,24 +156,26 @@ export default function DashboardWithDonations() {
                                 }}
                             >
                                 {/* Левая панель */}
-                                <Box sx={{ width: 100, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                    {isUp ? <ArrowUpwardIcon sx={{ color: 'lime' }} /> : <ArrowDownwardIcon sx={{ color: 'tomato' }} />}
+                                <Box sx={{width: 100, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                                    {isUp ? <ArrowUpwardIcon sx={{color: 'lime'}}/> :
+                                        <ArrowDownwardIcon sx={{color: 'tomato'}}/>}
                                     <Typography color="gray" fontSize={13} align="center" mt={1}>
                                         {text}
                                     </Typography>
                                 </Box>
 
                                 {/* Диаграмма */}
-                                <Box sx={{ flexGrow: 1, height: '100%' }}>
+                                <Box sx={{flexGrow: 1, height: '100%'}}>
                                     <Typography color="white" align="center" fontWeight="bold" mb={1}>
                                         Product {label}
                                     </Typography>
-                                    <ChartComponent data={data.chartData} options={chartOptions} />
+                                    <ChartComponent data={data.chartData} options={chartOptions}/>
                                 </Box>
 
                                 {/* Правая панель */}
-                                <Box sx={{ width: 60, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                    {isUp ? <ArrowUpwardIcon sx={{ color: 'lime' }} /> : <ArrowDownwardIcon sx={{ color: 'tomato' }} />}
+                                <Box sx={{width: 60, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                                    {isUp ? <ArrowUpwardIcon sx={{color: 'lime'}}/> :
+                                        <ArrowDownwardIcon sx={{color: 'tomato'}}/>}
                                     <Typography color="gray" fontSize={13} align="center" mt={1}>
                                         {text}
                                     </Typography>

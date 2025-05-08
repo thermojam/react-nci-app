@@ -17,8 +17,8 @@ const products = [
     },
     {
         id: 3,
-        image: 'https://pictures.dealer.com/i/irvinebmwbmw/1843/43ee5afa6a94835bff262c3145f9e2e8x.jpg?impolicy=downsize_bkpt&imdensity=1&w=520',
-        title: 'BMW',
+        image: 'https://img.autrado.de/2411/550018_1920.jpg',
+        title: 'AUDI',
         price: '$129.99',
         description: 'This is a great product.',
         features: ['Engine: V8', 'Color: Black', 'Year: 2023'],
@@ -41,8 +41,8 @@ const products = [
     },
     {
         id: 6,
-        image: 'https://greats.gallery/upload/resize_cache/iblock/aab/670_540_0/lera0sadltx403681rfi2eho9d4tucbj.jpg',
-        title: 'Mercedes',
+        image: 'https://media.architecturaldigest.com/photos/58f663faaf560d04a46dbaae/4:3/w_3855,h_2891,c_limit/Audi%20E-tron%20Sportback%20concept%20car%201.jpg',
+        title: 'AUDI',
         price: '$99.99',
         description: 'Luxury ride.',
         features: ['Engine: V6', 'Color: Silver', 'Year: 2025'],
@@ -65,8 +65,8 @@ const products = [
     },
     {
         id: 9,
-        image: 'https://pictures.dealer.com/i/irvinebmwbmw/1843/43ee5afa6a94835bff262c3145f9e2e8x.jpg?impolicy=downsize_bkpt&imdensity=1&w=520',
-        title: 'BMW',
+        image: 'https://inv.assets.sincrod.com/9/2/1/33695930129.jpg',
+        title: 'Infiniti',
         price: '$129.99',
         description: 'This is a great product.',
         features: ['Engine: V8', 'Color: Black', 'Year: 2023'],
@@ -89,8 +89,8 @@ const products = [
     },
     {
         id: 12,
-        image: 'https://greats.gallery/upload/resize_cache/iblock/aab/670_540_0/lera0sadltx403681rfi2eho9d4tucbj.jpg',
-        title: 'Mercedes',
+        image: 'https://www.stevenscreekinfiniti.com/blogs/6040/wp-content/uploads/2024/09/image-3.png',
+        title: 'Infiniti',
         price: '$99.99',
         description: 'Luxury ride.',
         features: ['Engine: V6', 'Color: Silver', 'Year: 2025'],
