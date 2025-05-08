@@ -13,7 +13,7 @@ export const Cancel = () => {
                 alignItems: 'center',
                 flexDirection: 'column',
                 height: '100vh',
-                backgroundColor: '#282828', // Красный фон для отмены
+                backgroundColor: '#282828',
                 color: 'white',
             }}
         >

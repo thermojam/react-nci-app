@@ -1,32 +1,28 @@
 import React from 'react';
-import {Box, Typography, CircularProgress} from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-
 
 export const Success = () => {
     return (
-        <>
-            <Box textAlign="center" mt={10}>
-                sx={{
+        <Box
+            sx={{
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 flexDirection: 'column',
                 height: '100vh',
-                backgroundColor: '#282828', // Зеленый фон для успеха
+                backgroundColor: '#282828',
                 color: 'white',
-            }}
-                >
-                <CheckCircleIcon sx={{ fontSize: 80, marginBottom: 2 }} />
-                <Typography variant="h4" sx={{ marginBottom: 2 }}>
-                    Donation Successful!
-                </Typography>
-                <CircularProgress sx={{ color: '#00a47a' }} />
-            </Box>
-        </>
-
+            }}>
+            <CheckCircleIcon color="success" sx={{ fontSize: 80, color: '#87faab' }} />
+            <Typography variant="h4" mt={2}>Спасибо за поддержку!</Typography>
+            <Typography mt={1}>Ваш платёж успешно завершён 🙌</Typography>
+        </Box>
     );
 };
+
+
+
 
 
 
