@@ -14,7 +14,7 @@ const DonateButton = () => {
             });
 
             if (res.data.url) {
-                window.open(res.data.url, '_blank', 'noopener,noreferrer');
+                window.open(res.data.url, '_blank');
             }
         } catch (error) {
             console.error('Donation failed:', error);
@@ -28,7 +28,7 @@ const DonateButton = () => {
             startIcon={<FavoriteIcon />}
             onClick={handleDonate}
         >
-            BOOST $5
+            BOOST $500
         </Button>
     );
 };

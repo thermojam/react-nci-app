@@ -1,7 +1,5 @@
 import {useEffect, useState} from 'react';
-import {
-    Box, Typography, Button, ButtonGroup, Stack, ToggleButton, ToggleButtonGroup, Paper
-} from '@mui/material';
+import {Box, Typography, Button, ButtonGroup, Stack, ToggleButton, ToggleButtonGroup, Paper} from '@mui/material';
 import {Bar, Line} from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -69,8 +67,6 @@ export default function DashboardWithDonations() {
     const [prevData1, setPrevData1] = useState(data1.rawData);
     const [prevData2, setPrevData2] = useState(data2.rawData);
 
-    const [donations, setDonations] = useState(0);
-
     useEffect(() => {
         const interval = setInterval(() => {
             const {count, labels} = PERIODS[period];
@@ -85,7 +81,6 @@ export default function DashboardWithDonations() {
         return () => clearInterval(interval);
     }, [period, data1, data2]);
 
-    const handleDonate = () => setDonations((prev) => prev + 5);
     const ChartComponent = chartType === 'bar' ? Bar : Line;
 
     const getChangeInfo = (current, prev) => {

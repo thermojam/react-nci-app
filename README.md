@@ -1,3 +1,13 @@
 # React + Vite
 
-## nci project
+## Nci project
+
+### Implemented functionality:
+- slider swiper
+- dynamic rendering of properties from file data.js
+- routing
+- diagram chart js 
+- donation
+- stripe pay (test mode)
+- page Success & Cancel
+- deploy Backend on Render

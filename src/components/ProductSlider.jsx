@@ -5,6 +5,7 @@ import products from '../data/products';
 import 'swiper/css';
 import 'swiper/css/grid';
 import 'swiper/css/pagination';
+import {Box} from '@mui/material';
 import styles from './ProductSlider.module.css';
 
 const chunkArray = (arr, size) =>
@@ -17,6 +18,7 @@ export default function ProductSlider() {
 
     return (
         <>
+           <Box sx={{paddingBottom: 10}}>
             <Swiper
                 className={styles.swiperContainer}
                 slidesPerView={1}
@@ -39,6 +41,7 @@ export default function ProductSlider() {
                     </SwiperSlide>
                 ))}
             </Swiper>
+           </Box>
         </>
     );
 }
