@@ -8,6 +8,7 @@ import {Cancel} from './pages/Cancel.jsx'
 
 function App() {
     return (
+
         <>
             <Router>
                 <Navbar/>
@@ -19,6 +20,7 @@ function App() {
                 </Routes>
             </Router>
         </>
+
     );
 }
 
