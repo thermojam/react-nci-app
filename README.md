@@ -11,3 +11,5 @@
 - stripe pay (test mode)
 - page Success & Cancel
 - deploy Backend on Render
+- added redirects '/*    /index.html   200'
+- 

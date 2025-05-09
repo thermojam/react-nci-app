@@ -9,28 +9,45 @@ const DonateButton = () => {
     const handleDonate = async () => {
         try {
             const res = await axios.post(`${DONATION_SERVER_URL}/create-checkout-session`, {
-                amount: 5000,
+                amount: 5000,  // $5 → 500 центов
                 currency: 'usd'
             });
 
             if (res.data.url) {
-                window.open(res.data.url, '_blank');
+                // iOS-safe переход — используем <a> элемент
+                const link = document.createElement('a');
+                link.href = res.data.url;
+                link.target = '_blank'; // можно также использовать '_self' для полной надежности
+                link.rel = 'noopener noreferrer';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
             }
         } catch (error) {
             console.error('Donation failed:', error);
+            alert('Ошибка при переходе на Stripe. Попробуйте позже.');
         }
     };
 
     return (
         <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             startIcon={<FavoriteIcon />}
             onClick={handleDonate}
+            sx={{
+                fontWeight: 600,
+                paddingX: 3,
+                paddingY: 1.5,
+                fontSize: '1rem',
+                textTransform: 'uppercase',
+                letterSpacing: '1px'
+            }}
         >
-            BOOST $500
+            BOOST $5
         </Button>
     );
 };
+
 
 export default DonateButton;
