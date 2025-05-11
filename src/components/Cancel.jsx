@@ -2,8 +2,6 @@ import React from 'react';
 import { Box, Typography} from '@mui/material';
 import { Cancel as CancelIcon } from '@mui/icons-material';
 
-
-
 export const Cancel = () => {
     return (
         <Box

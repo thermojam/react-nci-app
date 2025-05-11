@@ -97,7 +97,7 @@ export default function DashboardWithDonations() {
     };
 
     return (
-        <Box sx={{padding: 2, backgroundColor: '#1e1e1e', minHeight: '100vh'}}>
+        <Box sx={{padding: 2, backgroundColor: '#001628', minHeight: 'auto'}}>
             {/* Панель управления */}
             <Stack direction="row" justifyContent="space-between" alignItems="center" mb={4} spacing={2}
                    flexWrap="wrap">
