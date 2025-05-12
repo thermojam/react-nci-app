@@ -17,7 +17,7 @@ export const Cancel = () => {
             }}
         >
             <CancelIcon sx={{ fontSize: 200 ,color: '#fb3eff' }} />
-            <Typography variant="h2" sx={{ marginBottom: 2 }}>
+            <Typography variant="h4" sx={{ marginBottom: 2 }}>
                 Donation Failed!
             </Typography>
             <Button variant="contained" component={Link} to="/">

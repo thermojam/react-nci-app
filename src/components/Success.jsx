@@ -16,7 +16,7 @@ export const Success = () => {
                 color: 'white',
             }}>
             <CheckCircleIcon color="success" sx={{ fontSize: 200, color: '#74ffa1' }} />
-            <Typography variant="h2" sx={{ marginBottom: 2 }}>Спасибо за поддержку!</Typography>
+            <Typography variant="h4" sx={{ marginBottom: 2 }}>Спасибо за поддержку!</Typography>
             <Button variant="contained" component={Link} to="/">
                 На главную
             </Button>

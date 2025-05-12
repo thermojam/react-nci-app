@@ -8,56 +8,52 @@ const DONATION_SERVER_URL = 'https://backend-ubvq.onrender.com';
 export const DonateButton = () => {
     const [loading, setLoading] = useState(false);
 
-    const handleDonate = () => {
+    const handleDonate = async () => {
         setLoading(true);
+        try {
+            const res = await axios.post(`${DONATION_SERVER_URL}/create-checkout-session`, {
+                amount: 5000,
+                currency: 'usd',
+            });
 
-        const newTab = window.open('', '_blank');
-
-        axios.post(`${DONATION_SERVER_URL}/create-checkout-session`, {
-            amount: 5000,
-            currency: 'usd'
-        }).then(res => {
             if (res.data.url) {
-                newTab.location.href = res.data.url;
+                window.location.href = res.data.url;
             } else {
-                newTab.close();
-                alert('Не удалось получить ссылку на оплату.');
+                throw new Error('URL не получен от сервера');
             }
-        }).catch(err => {
-            console.error('Stripe error', err);
-            newTab.close();
-            alert('Ошибка при переходе на Stripe. Попробуйте позже.');
-        }).finally(() => {
+        } catch (error) {
+            console.error('Donation failed:', error);
+            alert('Произошла ошибка при переходе на Stripe.');
+        } finally {
             setLoading(false);
-        });
+        }
     };
 
     return (
-        <Box position="relative" display="inline-flex">
-            <Button sx={{padding: '10px'}}
+        <Box position="relative" display="inline-block">
+            <Button sx={{padding: '10px 18px'}}
                 variant="contained"
                 color="secondary"
                 startIcon={<FavoriteIcon />}
-                disabled={loading}
                 onClick={handleDonate}
+                disabled={loading}
             >
-                {loading ? 'Обработка...' : 'BOOST $500'}
+                {loading ? 'Переход...' : 'BOOST $5'}
             </Button>
             {loading && (
                 <CircularProgress
                     size={24}
-                    color="inherit"
                     sx={{
                         position: 'absolute',
                         top: '50%',
                         left: '50%',
                         marginTop: '-12px',
                         marginLeft: '-12px',
+                        color: 'white',
                     }}
                 />
             )}
         </Box>
     );
 };
-
 
