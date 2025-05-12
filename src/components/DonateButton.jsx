@@ -1,54 +1,63 @@
-import React from 'react';
-import { Button } from '@mui/material';
+import React, { useState } from 'react';
+import { Button, CircularProgress, Box } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import axios from 'axios';
 
 const DONATION_SERVER_URL = 'https://backend-ubvq.onrender.com';
 
-const DonateButton = () => {
-    const handleDonate = async () => {
-        try {
-            const res = await axios.post(`${DONATION_SERVER_URL}/create-checkout-session`, {
-                amount: 5000,  // $5 → 500 центов
-                currency: 'usd'
-            });
+export const DonateButton = () => {
+    const [loading, setLoading] = useState(false);
 
+    const handleDonate = () => {
+        setLoading(true);
+
+        const newTab = window.open('', '_blank');
+
+        axios.post(`${DONATION_SERVER_URL}/create-checkout-session`, {
+            amount: 5000,
+            currency: 'usd'
+        }).then(res => {
             if (res.data.url) {
-                // iOS-safe переход — используем <a> элемент
-                const link = document.createElement('a');
-                link.href = res.data.url;
-                link.target = '_blank'; // можно также использовать '_self' для полной надежности
-                link.rel = 'noopener noreferrer';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                newTab.location.href = res.data.url;
+            } else {
+                newTab.close();
+                alert('Не удалось получить ссылку на оплату.');
             }
-        } catch (error) {
-            console.error('Donation failed:', error);
+        }).catch(err => {
+            console.error('Stripe error', err);
+            newTab.close();
             alert('Ошибка при переходе на Stripe. Попробуйте позже.');
-        }
+        }).finally(() => {
+            setLoading(false);
+        });
     };
 
     return (
-        <Button
-            variant="contained"
-            startIcon={<FavoriteIcon />}
-            onClick={handleDonate}
-            sx={{
-                backgroundColor: '#f420ff',
-                color: '#ffffff',
-                fontWeight: 600,
-                paddingX: 3,
-                paddingY: 1.5,
-                fontSize: '1rem',
-                textTransform: 'uppercase',
-                letterSpacing: '1px'
-            }}
-        >
-            BOOST $5
-        </Button>
+        <Box position="relative" display="inline-flex">
+            <Button sx={{padding: '10px'}}
+                variant="contained"
+                color="secondary"
+                startIcon={<FavoriteIcon />}
+                disabled={loading}
+                onClick={handleDonate}
+            >
+                {loading ? 'Обработка...' : 'BOOST $500'}
+            </Button>
+            {loading && (
+                <CircularProgress
+                    size={24}
+                    color="inherit"
+                    sx={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        marginTop: '-12px',
+                        marginLeft: '-12px',
+                    }}
+                />
+            )}
+        </Box>
     );
 };
 
 
-export default DonateButton;
