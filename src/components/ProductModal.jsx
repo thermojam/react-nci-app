@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
+import {Box} from "@mui/material"
+import {DonateButton} from "./DonateButton.jsx"
 
 const ProductModal = ({ show, handleClose, product }) => {
     if (!product) return null;
@@ -31,7 +33,9 @@ const ProductModal = ({ show, handleClose, product }) => {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="dark" onClick={handleClose}>Закрыть</Button>
+                <Box sx={{padding: 2}}>
+                    <DonateButton/>
+                </Box>
             </Modal.Footer>
         </Modal>
     );
