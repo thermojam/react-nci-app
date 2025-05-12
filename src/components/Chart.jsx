@@ -97,7 +97,7 @@ export default function DashboardWithDonations() {
     };
 
     return (
-        <Box sx={{padding: 2, backgroundColor: '#001628', minHeight: 'auto'}}>
+        <Box sx={{padding: 2, backgroundColor: '#001628', minHeight: '95vh'}}>
             {/* Панель управления */}
             <Stack direction="row" justifyContent="space-between" alignItems="center" mb={4} spacing={2}
                    flexWrap="wrap">
@@ -129,7 +129,7 @@ export default function DashboardWithDonations() {
             </Stack>
 
             {/* Графики */}
-            <Stack direction="row" spacing={8} justifyContent="center" flexWrap="wrap">
+            <Stack direction="row" spacing={8} justifyContent="center" flexWrap="wrap" marginTop={12}>
                 {[{data: data1, prev: prevData1, label: 'New'}, {data: data2, prev: prevData2, label: 'Used'}].map(
                     ({data, prev, label}, idx) => {
                         const {isUp, text} = getChangeInfo(data.rawData, prev);
@@ -139,7 +139,7 @@ export default function DashboardWithDonations() {
                                 key={idx}
                                 sx={{
                                     width: 500,
-                                    height: 750,
+                                    height: 550,
                                     backgroundColor: '#282828',
                                     borderRadius: 2,
                                     p: 2,

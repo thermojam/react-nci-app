@@ -19,12 +19,9 @@ export const Ant = () => {
 
     return (
         <Layout style={{height: '95vh'}}>
-            <Sider trigger={null} collapsible collapsed={collapsed}>
+            <Sider trigger={null} collapsible collapsed={collapsed} style={{background: '#ffffff'}}>
                 <div className="demo-logo-vertical"/>
                 <Menu
-                    styles={{
-                        margin: 2
-                    }}
                     theme="dark"
                     mode="inline"
                     defaultSelectedKeys={['1']}
@@ -41,11 +38,19 @@ export const Ant = () => {
                             key: '3',
                             icon: <UploadOutlined/>,
                         },
+                        {
+                            key: '4',
+                            icon: <UploadOutlined/>,
+                        },
+                        {
+                            key: '5',
+                            icon: <UploadOutlined/>,
+                        },
                     ]}
                 />
             </Sider>
             <Layout>
-                <Header style={{padding: 0, background: '#001628'}}>
+                <Header style={{padding: 0, background: '#eaeaea'}}>
                     <Button
                         type="text"
                         icon={collapsed ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}
@@ -54,18 +59,18 @@ export const Ant = () => {
                             fontSize: '16px',
                             width: 64,
                             height: 64,
-                            color: 'white',
+                            color: 'dark',
                         }}
                     />
                 </Header>
                 <Content
                     style={{
-                        margin: '10px 10px',
-                        padding: 24,
-                        background: '#1876d2',
+                        margin: '20px 20px',
+                        padding: '10px 10px',
+                        background: '#eaeaea',
                         borderRadius: borderRadiusLG,
                     }}
-                >
+                > Content
                 </Content>
             </Layout>
         </Layout>

@@ -32,10 +32,11 @@ const DonateButton = () => {
     return (
         <Button
             variant="contained"
-            color="primary"
             startIcon={<FavoriteIcon />}
             onClick={handleDonate}
             sx={{
+                backgroundColor: '#f420ff',
+                color: '#ffffff',
                 fontWeight: 600,
                 paddingX: 3,
                 paddingY: 1.5,

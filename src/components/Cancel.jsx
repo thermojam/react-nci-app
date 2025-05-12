@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Typography} from '@mui/material';
+import {Box, Button, Typography} from '@mui/material';
 import { Cancel as CancelIcon } from '@mui/icons-material';
+import {Link} from "react-router-dom"
 
 export const Cancel = () => {
     return (
@@ -11,14 +12,17 @@ export const Cancel = () => {
                 alignItems: 'center',
                 flexDirection: 'column',
                 height: '100vh',
-                backgroundColor: '#282828',
+                backgroundImage: 'linear-gradient(90deg, #a60101 0%, #7c0284 100%)',
                 color: 'white',
             }}
         >
-            <CancelIcon sx={{ fontSize: 120 ,color: '#fb3eff' }} />
-            <Typography variant="h4" sx={{ marginBottom: 2 }}>
+            <CancelIcon sx={{ fontSize: 200 ,color: '#fb3eff' }} />
+            <Typography variant="h2" sx={{ marginBottom: 2 }}>
                 Donation Failed!
             </Typography>
+            <Button variant="contained" component={Link} to="/">
+                На главную
+            </Button>
         </Box>
     );
 };

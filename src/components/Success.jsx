@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import {Box, Button, Typography} from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import {Link} from "react-router-dom"
 
 export const Success = () => {
     return (
@@ -11,12 +12,14 @@ export const Success = () => {
                 alignItems: 'center',
                 flexDirection: 'column',
                 height: '100vh',
-                backgroundColor: '#282828',
+                backgroundImage: 'linear-gradient(90deg, #73e49a 0%, #096227 98.96%)',
                 color: 'white',
             }}>
-            <CheckCircleIcon color="success" sx={{ fontSize: 120, color: '#74ffa1' }} />
-            <Typography variant="h4" mt={2}>Спасибо за поддержку!</Typography>
-            <Typography mt={1}>Ваш платёж успешно завершён 🙌</Typography>
+            <CheckCircleIcon color="success" sx={{ fontSize: 200, color: '#74ffa1' }} />
+            <Typography variant="h2" sx={{ marginBottom: 2 }}>Спасибо за поддержку!</Typography>
+            <Button variant="contained" component={Link} to="/">
+                На главную
+            </Button>
         </Box>
     );
 };
